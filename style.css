@@ -118,6 +118,14 @@ button.video-btn {
     background-blend-mode: color-burn;
 }
 
+.filter:hover {
+    transform: scale(1.1);
+}
+
+.filter:active {
+    transform: scale(0.8);
+}
+
 .sun {
     background-color: rgba(204, 161, 81, 0.3);
 }
