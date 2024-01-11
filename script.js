@@ -5,6 +5,7 @@ let captureBtn = document.querySelector(".capture-btn")
 let recordFlag = false
 let mediaRecorder
 let chunks = [] // video stream in chunks
+let filterColor = 'transparent'
 
 let constraints = {
     video: true,
@@ -62,6 +63,10 @@ captureBtn.addEventListener("click", (e) => {
 
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
 
+    // Filtering Canvas
+    ctx.fillStyle = filterColor
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+
     let imgURL = canvas.toDataURL()
     let a = document.createElement("a")
     a.href = imgURL
@@ -109,7 +114,7 @@ let filterLayer = document.querySelector(".filter-layer")
 filters.forEach((filter)=>{
     filter.addEventListener("click", ()=>{
         let style = getComputedStyle(filter)
-        let bgColor = style.backgroundColor
-        filterLayer.style.backgroundColor = bgColor
+        filterColor = style.backgroundColor
+        filterLayer.style.backgroundColor = filterColor
     })
 })
