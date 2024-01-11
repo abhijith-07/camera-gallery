@@ -1,6 +1,7 @@
 let video = document.querySelector("video")
 
 let videoRecorderBtn = document.querySelector(".video-btn")
+let captureBtn = document.querySelector(".capture-btn")
 let recordFlag = false
 let mediaRecorder
 let chunks = [] // video stream in chunks
@@ -48,6 +49,24 @@ videoRecorderBtn.addEventListener("click", (e) => {
         videoRecorderBtn.classList.remove("scale-record")
         stopTimer()
     }
+})
+
+captureBtn.addEventListener("click", (e) => {
+    captureBtn.classList.add("scale-capture")
+    
+    let canvas = document.createElement("canvas")
+    let ctx = canvas.getContext("2d");
+
+    canvas.width = video.videoWidth
+    canvas.height = video.videoHeight
+
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
+
+    let imgURL = canvas.toDataURL()
+    let a = document.createElement("a")
+    a.href = imgURL
+    a.download = "img.png"
+    a.click()
 })
 
 let timerId
