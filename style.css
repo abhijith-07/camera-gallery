@@ -75,3 +75,24 @@ button.video-btn {
         transform: scale(0.8);
     }
 }
+
+.timer-container {
+    text-align: center;
+    height: 3rem;
+    width: 100%;
+    position: absolute;
+    top: 1rem;
+    display: block;
+    color: #fff;
+}
+
+.timer {
+    background-color: black;
+    display: none;
+    padding: .5em;
+    font-size: 1.5rem;
+}
+
+.timer-start {
+    display: inline;
+}
