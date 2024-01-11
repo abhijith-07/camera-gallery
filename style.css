@@ -51,3 +51,27 @@ button.video-btn, button.capture-btn {
 button.video-btn {
     background-color: red;
 }
+
+.scale-record {
+    animation: blink-record;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+}
+
+.scale-capture {
+    animation: blink-record;
+    animation-iteration-count: 1;
+    animation-duration: 0.5s;
+}
+
+@keyframes blink-record {
+    0% {
+        transform: scale(0.8);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(0.8);
+    }
+}
