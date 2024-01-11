@@ -101,3 +101,15 @@ function stopTimer() {
     counter = 0
     timer.innerText = "00:00:00"
 }
+
+// Filter
+let filters = document.querySelectorAll(".filter")
+let filterLayer = document.querySelector(".filter-layer")
+
+filters.forEach((filter)=>{
+    filter.addEventListener("click", ()=>{
+        let style = getComputedStyle(filter)
+        let bgColor = style.backgroundColor
+        filterLayer.style.backgroundColor = bgColor
+    })
+})
