@@ -12,4 +12,8 @@ openRequest.addEventListener("error", (e) => {
 
 openRequest.addEventListener("upgradeneeded", (e) => {
     console.log("Upgrade Needed")
+    db = openRequest.result
+    
+    db.createObjectStore("video", {keyPath: 'videoID'})
+    db.createObjectStore("image", {keyPath: 'imageID'})
 })

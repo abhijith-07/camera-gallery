@@ -27,12 +27,16 @@ navigator.mediaDevices.getUserMedia(constraints)
 
     mediaRecorder.addEventListener("stop", (e)=>{
         let blob = new Blob(chunks, { type: "video/mp4" })
-        let videoURL = URL.createObjectURL(blob)
 
-        let a = document.createElement("a")
-        a.href = videoURL
-        a.download = "stream.mp4"
-        a.click()
+        // Transaction to objectStore
+        let uid = new ShortUniqueId()
+        let dbTransaction = db.transaction("video", "readwrite")
+        let videoStore = dbTransaction.objectStore("video")
+        let videoEntry = {
+            videoID: `vid-${uid.seq()}`,
+            blobData: blob 
+        }
+        videoStore.add(videoEntry)
     })
 })
 
