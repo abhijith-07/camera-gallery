@@ -71,11 +71,16 @@ captureBtn.addEventListener("click", (e) => {
     ctx.fillStyle = filterColor
     ctx.fillRect(0, 0, canvas.width, canvas.height)
 
+    // Transaction to objectStore
     let imgURL = canvas.toDataURL()
-    let a = document.createElement("a")
-    a.href = imgURL
-    a.download = "img.png"
-    a.click()
+    let uid = new ShortUniqueId()
+    let dbTransaction = db.transaction("image", "readwrite")
+    let imageStore = dbTransaction.objectStore("image")
+    let imageEntry = {
+        imageID: `img-${uid.seq()}`,
+        blobData: imgURL 
+    }
+    imageStore.add(imageEntry)
 })
 
 let timerId
