@@ -34,9 +34,15 @@
             gallery_thumbnail
         </span>
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/short-unique-id@latest/dist/short-unique-id.min.js"></script>
     <script src="db.js"></script>
     <script src="script.js"></script>
+    <script>
+        let galleryIcon = document.querySelector(".gallery-icon")
+        galleryIcon.addEventListener("click", (e) => {
+            location.assign("./gallery.html")
+        })
+    </script>
 </body>
 </html>
