@@ -60,11 +60,11 @@ captureBtn.addEventListener("click", (e) => {
     captureBtn.classList.add("scale-capture")
     
     let canvas = document.createElement("canvas")
-    let ctx = canvas.getContext("2d");
 
     canvas.width = video.videoWidth
     canvas.height = video.videoHeight
 
+    let ctx = canvas.getContext("2d");
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
 
     // Filtering Canvas
@@ -73,14 +73,17 @@ captureBtn.addEventListener("click", (e) => {
 
     // Transaction to objectStore
     let imgURL = canvas.toDataURL()
-    let uid = new ShortUniqueId()
-    let dbTransaction = db.transaction("image", "readwrite")
-    let imageStore = dbTransaction.objectStore("image")
-    let imageEntry = {
-        imageID: `img-${uid.seq()}`,
-        blobData: imgURL 
+
+    if (db){
+        let uid = new ShortUniqueId()
+        let dbTransaction = db.transaction("image", "readwrite")
+        let imageStore = dbTransaction.objectStore("image")
+        let imageEntry = {
+            imageID: `img-${uid.seq()}`,
+            url: imgURL 
+        }
+        imageStore.add(imageEntry)
     }
-    imageStore.add(imageEntry)
 })
 
 let timerId
