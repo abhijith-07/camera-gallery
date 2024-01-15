@@ -6,10 +6,8 @@
 
 :root {
     --dark: #2c3e50;
-    --orange: #e76c19;
+    --orange: #d35400;
     --white: #fff;
-    --red: #e71919;
-    --green: #09cc23;
 }
 
 body {
@@ -18,19 +16,14 @@ body {
 }
 
 .back-btn span {
-    color: var(--orange);
-    background-color: var(--white);
+    color: #d35400;
+    background-color: #fff;
     font-size: 2rem;
     padding: .25em;
     border-radius: .25em;
     margin: 1rem;
     font-weight: 800;
     cursor: pointer;
-}
-
-.back-btn span:hover {
-    color: var(--dark);
-    background-color: var(--orange);
 }
 
 .gallery-container {
@@ -67,14 +60,4 @@ body {
     cursor: pointer;
     font-size: 1.75rem;
     color: var(--white);
-    border-radius: .25em;
-    padding: .15em;
-}
-
-.delete span {
-    background-color: var(--red);
-}
-
-.download span {
-    background-color: var(--green);
 }
