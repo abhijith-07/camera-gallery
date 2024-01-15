@@ -45,6 +45,17 @@ if(db) {
     imageRequest.addEventListener( "success",(e) => {
         let imageResult = imageRequest.result
         let galleryContainer = document.querySelector(".gallery-container")
+        
+        if (imageResult.length === 0) {
+            let mediaElem = document.querySelector(".gallery-container")
+            mediaElem.innerHTML = 
+                `<div class="empty-gallery">
+                    <span class="material-symbols-outlined">
+                        sentiment_very_dissatisfied
+                    </span>
+                    <h2>Gallery is Empty</h2>
+                </div>`  
+        }
         imageResult.forEach((imageObj) => {
             let mediaElem = document.createElement("div")
 
